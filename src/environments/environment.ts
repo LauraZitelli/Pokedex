@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false, // offset é de onde começa (0) e limit é até onde vai a resposta (1050 pokemons)
+  pokeApiUrl: 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=1050', // conecta com a API
 };
 
 /*

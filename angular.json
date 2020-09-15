@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Pokemon"
+    }
+  },
+  "defaultProject": "Pokemon",
+  "cli": {
+    "analytics": false
+  }
 }
