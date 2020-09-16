@@ -2,8 +2,9 @@
 <div class="row row-cols-3 row-cols-md-3">
   <div class="col mb-4">
     <div *ngIf="pokemons$ | async as pokemon" >
+
+      <div *ngIf="getNames$ | async as name">
       <div *ngFor="let item of pokemon.results; let indexOfelement = index">
-       
         <div class="col mb-4">
           <div class="card border-light mb-3" id="container" style="max-width: 20rem; margin-left: 100px; margin-top: 30px">
             <div class="card-header"><h2>{{item.name | titlecase}}</h2>  
@@ -11,12 +12,17 @@
               <h4>Número #{{indexOfelement + 1}}</h4>
             </div>
             <div class="card-body">
-              <img id="pic"> 
+              <img id="pic" src="{{name.sprites.front_shiny}}" width="100%" height="100%"> 
+              <div>
+                <h4>{{name.height}}</h4>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
+
+    </div>
+
     </div>
   </div>
   

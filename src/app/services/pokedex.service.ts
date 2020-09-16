@@ -11,8 +11,8 @@ import { environment } from '../../environments/environment';
 export class PokedexService {
 
   private pokeApiUrl: string = environment.pokeApiUrl;
-  private names: string[] = [];
-  private index: any = 0;
+  public names$: Observable<any[]>;
+  public index: any = 0;
 
   constructor(private http: HttpClient) {
   }
@@ -22,7 +22,7 @@ export class PokedexService {
     return this.http.get<any>(`${this.pokeApiUrl}/pokemon?offset=0&limit=1050`);
   }
 
-  /* faz o request do Pokemon cujo id é passado por parametro
+  // faz o request do Pokemon cujo id é passado por parametro
   getPokemonsById(id: any): Observable <any> {
     return this.http.get<any>(`${this.pokeApiUrl}/pokemon/${id}`);
   }
@@ -31,22 +31,17 @@ export class PokedexService {
   getPokemonsByName(name: string): Observable<any> {
     return this.http.get<any>(`${this.pokeApiUrl}/pokemon/${name}`);
   }
-  */
 
-
-
-  getPokemonsName(): string[] {
+  getPokemonsNames(): Observable<any[]> {
     this.getPokemons().subscribe(data => {
       data.results.forEach(item => {
-        this.names[this.index] = item.name;
+        this.names$[this.index] = this.http.get<string[]>(`${this.pokeApiUrl}/pokemon/${item.name}`);
+        console.log(this.names$);
         this.index++;
       });
     });
-    console.log(this.names);
-    return this.names;
+    return this.names$;
   }
-
-
 }
 
 /* isso aqui dentro de listPokemons funciona!
@@ -56,4 +51,20 @@ export class PokedexService {
     });
     });
     return this.pokemons;
+*/
+
+/*
+    getPokemonsName(): string[] {
+    this.getPokemons().subscribe(data => {
+      data.results.forEach(item => {
+        // console.log(item.name);
+        // this.names$ = this.http.get<any>(`${this.pokeApiUrl}/pokemon/${item.name}`);
+        // console.log(this.names$);
+        this.names[this.index] = item.name;
+        this.index++;
+      });
+    });
+    // console.log(this.names);
+    return this.names;
+  }
 */
