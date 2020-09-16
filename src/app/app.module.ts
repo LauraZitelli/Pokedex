@@ -8,14 +8,14 @@ import { HeaderComponent } from './components/header/header.component';
 import { PokedexService } from './services/pokedex.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PokemonComponent } from './components/pokemon/pokemon.component';
-import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
+import { PokemonIdComponent } from './components/pokemon-id/pokemon-id.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     PokemonComponent,
-    PokemonListComponent
+    PokemonIdComponent,
   ],
   imports: [
     BrowserModule,

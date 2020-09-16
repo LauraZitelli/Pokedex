@@ -1,45 +1,38 @@
 
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card border-light mb-3" id="container" style="max-width: 20rem; margin-left: 100px; margin-top: 30px">
-      <div class="card-header">Nome</div>
-      <div class="card-body">
-        <img id="pic"> 
-        <h4 id="numero">Número</h4>
-        <p>
-          <span class="badge badge-primary" style="margin-right: 10px">Primary</span>
-          <span class="badge badge-secondary" style="margin-right: 10px">Secondary</span>
-          <span class="badge badge-success" style="margin-right: 10px">Success</span>
-          <span class="badge badge-danger" style="margin-right: 10px">Danger</span>
-          <span class="badge badge-warning" style="margin-right: 10px">Warning</span>
-          <span class="badge badge-info" style="margin-right: 10px">Info</span>
-          <span class="badge badge-light" style="margin-right: 10px">Light</span>
-          <span class="badge badge-dark" style="margin-right: 10px">Dark</span>
-        </p>
-      </div>
-    </div>
-  </div>
+<div class="row row-cols-3 row-cols-md-3">
+  <div class="col mb-4">
+    <div *ngIf="pokemons$ | async as pokemon" >
+      <div *ngFor="let item of pokemon.results; let indexOfelement = index">
+       
+        <div class="col mb-4">
+          <div class="card border-light mb-3" id="container" style="max-width: 20rem; margin-left: 100px; margin-top: 30px">
+            <div class="card-header"><h2>{{item.name | titlecase}}</h2>  
+              <br>
+              <h4>Número #{{indexOfelement + 1}}</h4>
+            </div>
+            <div class="card-body">
+              <img id="pic"> 
+            </div>
+          </div>
+        </div>
 
-  <div class="col-sm-6">
-    <div class="card border-light mb-3" id="container" style="max-width: 20rem; margin-left: 100px; margin-top: 30px">
-      <div class="card-header">Nome</div>
-      <div class="card-body">
-        <img id="pic"> 
-        <h4 id="numero">Número</h4>
-        <p>
-          <span class="badge badge-primary" style="margin-right: 10px">Primary</span>
-          <span class="badge badge-secondary" style="margin-right: 10px">Secondary</span>
-          <span class="badge badge-success" style="margin-right: 10px">Success</span>
-          <span class="badge badge-danger" style="margin-right: 10px">Danger</span>
-          <span class="badge badge-warning" style="margin-right: 10px">Warning</span>
-          <span class="badge badge-info" style="margin-right: 10px">Info</span>
-          <span class="badge badge-light" style="margin-right: 10px">Light</span>
-          <span class="badge badge-dark" style="margin-right: 10px">Dark</span>
-        </p>
       </div>
     </div>
   </div>
   
+  <br>
+
 </div>
 
-
+<!--
+  <p>
+    <span class="badge badge-primary" style="margin-right: 10px">Primary</span>
+    <span class="badge badge-secondary" style="margin-right: 10px">Secondary</span>
+    <span class="badge badge-success" style="margin-right: 10px">Success</span>
+    <span class="badge badge-danger" style="margin-right: 10px">Danger</span>
+    <span class="badge badge-warning" style="margin-right: 10px">Warning</span>
+    <span class="badge badge-info" style="margin-right: 10px">Info</span>
+    <span class="badge badge-light" style="margin-right: 10px">Light</span>
+                <span class="badge badge-dark" style="margin-right: 10px">Dark</span>
+  </p>
+-->
