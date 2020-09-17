@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PokedexService } from '../../services/pokedex.service';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -8,20 +9,24 @@ import { Observable } from 'rxjs';
   templateUrl: './pokemon.component.html',
   styleUrls: ['./pokemon.component.css']
 })
+
 export class PokemonComponent implements OnInit {
 
-  constructor(private pokedexService: PokedexService) { }
+  constructor(private pokedexService: PokedexService, private http: HttpClient) { }
 
   public pokemons$: Observable<any>;
   public names$: Observable<any[]>;
   public getNames$: Observable<any>;
-  // public id: any = 1;
+
+  public pokemonData: any[] = [];
+  public aux: Observable<any>;
+  public index: any = 0;
 
   ngOnInit(): void {
-    this.pokedexService.getPokemons().subscribe(data => console.log(data));
-    this.getPokemons();
+    /*this.getPokemons();
     this.getPokemonsByName();
-    this.getPokemonsNames();
+    this.getPokemonsNames();*/
+    this.fetchPokemon();
   }
 
   // método que obtém uma lista com os 1050 nomes dos Pokemons
@@ -42,5 +47,27 @@ export class PokemonComponent implements OnInit {
    return this.names$;
   }
 
+  fetchPokemon(): any {
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=1050')
+      .then(response => response.json())
+      .then(allPokemons => allPokemons.results.forEach(item => {
+        this.fetchPokemonData(item);
+      })
+      );
+  }
+
+  fetchPokemonData(item): any {
+    const url: string = item.url;
+    fetch(url)
+      .then(response => response.json())
+      .then(pokemonData => this.pokemonData[pokemonData.id - 1] = pokemonData)
+      .then(() => console.log(this.pokemonData));
+  }
+
+  getPokemonData(item): any {
+      const url: string = item.url;
+      this.http.get<any>(url).subscribe(data => this.aux = data);
+  }
 }
 
+// this.pokemonData = pokemonData
