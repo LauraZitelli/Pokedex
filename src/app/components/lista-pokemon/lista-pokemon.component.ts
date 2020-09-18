@@ -18,7 +18,7 @@ export class ListaPokemonComponent implements OnInit {
   public pokemonAtual: any = '';
 
   public offset: any = 0;
-  public limit: any = 20;
+  public limit: any = 21;
 
   ngOnInit(): void {
     this.listarPokemon(this.offset, this.limit);

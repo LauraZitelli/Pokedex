@@ -1,13 +1,15 @@
-<div class="card border-secondary mb-3" style="max-width: 20rem;">
+<div class="col justify-content-md-center" style="margin-left: 70px">
+  <div class="card border-secondary mb-3 mt-5 ml-5 mr-5 float-left " style="max-width: 20rem;">
 
-  <div *ngIf="infosDoPokemon.load">
-    <h3 class="card-header">{{pokemonName | titlecase}}</h3>
-    <div class="card-body">
-      <h4>Número #{{infosDoPokemon.load.id}}</h4>
-      <img src="{{infosDoPokemon.load.sprites.front_shiny}}">
-      <div>{{infosDoPokemon.load.types.slot}}</div>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <div *ngIf="infosDoPokemon.load">
+      <h3 class="card-header">{{pokemonName | titlecase}}</h3>
+      <div class="card-body">
+        <h4>Número #{{infosDoPokemon.load.id}}</h4>
+        <img src="{{infosDoPokemon.load.sprites.front_shiny}}" width="100%" height="100%">
+        <div>{{infosDoPokemon.load.types.slot}}</div>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
     </div>
+    
   </div>
-  
 </div>
