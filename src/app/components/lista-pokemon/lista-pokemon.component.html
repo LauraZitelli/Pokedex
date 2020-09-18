@@ -1,0 +1,11 @@
+<div>
+  <div *ngIf="listaDePokemons">
+    <div *ngFor="let item of listaDePokemons">
+      <app-adiciona-pokemon [pokemonName]="item.name"></app-adiciona-pokemon>
+    </div>
+  </div>
+</div>
+
+
+
+
