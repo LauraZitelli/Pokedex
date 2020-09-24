@@ -21,6 +21,5 @@ export class AdicionaPokemonComponent implements OnInit {
 
   adicionarPokemon(): any { // this.pokemonName é o input que vem do template de lista-pokemons
     this.adicionarPokemonService.adicionarPokemon(this.pokemonName).subscribe(data => this.infosDoPokemon.load = data);
-    console.log(this.infosDoPokemon);
   }
 }

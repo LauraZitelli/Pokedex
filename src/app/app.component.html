@@ -1,3 +1,4 @@
-<app-header></app-header>
-<app-lista-pokemon></app-lista-pokemon>
+<app-header (searchChanged)="searchChangedHandler($event)"></app-header>
+<app-lista-pokemon [searchPokemon]="searchPokemon"></app-lista-pokemon>
+
 

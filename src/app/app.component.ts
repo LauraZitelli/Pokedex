@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Pokemon';
+
+  searchPokemon: any = '';
+
+  searchChangedHandler(event: any): any {
+    this.searchPokemon = event;
+    console.log('searchPokemon agora vale:');
+    console.log(this.searchPokemon);
+  }
+
 }

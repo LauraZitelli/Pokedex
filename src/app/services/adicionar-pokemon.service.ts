@@ -11,6 +11,11 @@ export class AdicionarPokemonService {
   constructor(private http: HttpClient) { }
 
   adicionarPokemon(nome: string): any {
-    return this.http.get(`${environment.url}/pokemon/${nome}`);
+    try {
+      return this.http.get(`${environment.url}/pokemon/${nome}`);
+    }
+    catch {
+      alert('Pokemon não encontrado');
+    }
   }
 }

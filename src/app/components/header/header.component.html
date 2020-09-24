@@ -4,18 +4,18 @@
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand ml-5" href="#">Pokedex</a>
+  <a class="navbar-brand ml-5" href="#" routerLink="">Pokedex</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarColor02">
-    <form class="form-inline mx-auto">
-      <input class="form-control mr-0" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-0 ml-1" type="submit">Search</button>
-    </form>
+  <div class="collapse navbar-collapse justify-content-md-center" id="navbarColor02">
+    <input class="form-control" type="text" placeholder="Search by Name" (keyup.enter)="onSave($event.target.value)">
+    <button class="btn btn-secondary my-2 my-sm-0 ml-1" type="submit" (click)="onSave($event.target.value)">Search</button>
   </div>
 </nav>
 
-
-
+<!--
+  <form class="form-inline mx-auto">
+  </form>
+-->

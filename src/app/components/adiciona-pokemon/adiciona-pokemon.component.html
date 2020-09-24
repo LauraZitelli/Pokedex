@@ -1,13 +1,15 @@
-<div class="col justify-content-md-center" style="margin-left: 70px">
-  <div class="card border-secondary mb-3 mt-5 ml-5 mr-5 float-left " style="max-width: 20rem;">
+<div class="col justify-content-md-center" style="margin-left: 70px; margin-right: 5px">
+  <div class="card border-secondary mb-3 mt-5 ml-5 mr-5 float-left list-group-item list-group-item-action" style="width: 23%; height: 286.77"><!--width: 205.15-->
 
     <div *ngIf="infosDoPokemon.load">
-      <h3 class="card-header">{{pokemonName | titlecase}}</h3>
-      <div class="card-body">
+      <h3 class="card-header justify-content-md-center">{{pokemonName | titlecase}}</h3>
+      <div class="card-body justify-content-md-center">
         <h4>Número #{{infosDoPokemon.load.id}}</h4>
-        <img src="{{infosDoPokemon.load.sprites.front_shiny}}" width="100%" height="100%">
-        <div>{{infosDoPokemon.load.types.slot}}</div>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <img src="{{infosDoPokemon.load.sprites.front_shiny}}" width="215px" height="215px">
+          <br>
+          <span class="badge badge-light" style="font-family: Flexo-Medium,arial,sans-serif; border-radius: 3px; line-height: 18px; 
+          max-width: 110px; margin: 0 1.5625% 20px 0; width: 38.4375%; float: left; font-size: 11px; 
+          text-align: center">{{infosDoPokemon.load.types[0].type.name}}</span>
       </div>
     </div>
     

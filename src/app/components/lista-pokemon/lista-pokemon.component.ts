@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { ListarPokemonService } from '../../services/listar-pokemon.service';
@@ -9,30 +9,58 @@ import { ListarPokemonService } from '../../services/listar-pokemon.service';
   templateUrl: './lista-pokemon.component.html',
   styleUrls: ['./lista-pokemon.component.css']
 })
-export class ListaPokemonComponent implements OnInit {
+export class ListaPokemonComponent implements OnInit, OnChanges {
 
   constructor(private listarPokemonService: ListarPokemonService) { }
 
   public listaDePokemons: any[] = [];
+  public listaDeApresentacao: any[] = [];
+
   public index: any = 0;
   public pokemonAtual: any = '';
 
   public offset: any = 0;
   public limit: any = 21;
 
+
+  @Input() searchPokemon: string; // filtro
+
   ngOnInit(): void {
     this.listarPokemon(this.offset, this.limit);
+  }
+
+  ngOnChanges(): void {
+    this.obterPokemon();
   }
 
   listarPokemon(offset: any, limit: any): any {
     this.listarPokemonService.listarPokemon(this.offset, this.limit).subscribe(data =>
       data.results.forEach(element => {
-        this.listaDePokemons[this.index] = element;
+        this.listaDePokemons.push(element.name);
         this.pokemonAtual = element.name;
-        this.index++;
-      })
+      }), console.log('começou a rodar obterPokemon no subscribe'), this.obterPokemon(), console.log('terminou de rodar obterPokemon no subscribe')
     );
-    // console.log(this.listaDePokemons);
+
+  }
+
+  // deveria retornar o elemento cujo nome é igual ao nome pesquisado na lista
+  obterPokemon(): any {
+    // console.log('Agora tá filtrando...');
+    if (! (this.listaDePokemons.length === 0 || ! this.searchPokemon) ) {
+      this.listaDeApresentacao = [];
+      this.listaDeApresentacao = this.listaDePokemons.filter(pokemon => {
+        return pokemon === this.searchPokemon;
+      });
+      if (this.listaDeApresentacao.length === 0){
+        alert('Pokemon não encontrado');
+      }
+      console.log('entrou no if');
+      console.log('Lista de apresentacao:');
+      console.log(this.listaDeApresentacao);
+    } else {
+      this.listaDeApresentacao = [];
+      this.listaDeApresentacao = this.listaDePokemons;
+    }
   }
 
 }
