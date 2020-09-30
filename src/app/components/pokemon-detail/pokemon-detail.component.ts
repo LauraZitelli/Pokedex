@@ -1,23 +1,43 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
+
 import { AdicionarPokemonService } from '../../services/adicionar-pokemon.service';
+
 
 @Component({
   selector: 'app-pokemon-detail',
   templateUrl: './pokemon-detail.component.html',
   styleUrls: ['./pokemon-detail.component.css']
 })
-export class PokemonDetailComponent implements OnInit {
+export class PokemonDetailComponent implements OnInit, OnDestroy {
 
-  @Input() pokemonName: any;
-  public infosDoPokemon: any = {};
+  constructor(private adicionarPokemonService: AdicionarPokemonService, private route: ActivatedRoute) {}
 
-  constructor(private adicionarPokemonService: AdicionarPokemonService) { }
+  key: any;
+  inscricao: Subscription;
+  public pokemonDetail: any = {};
 
   ngOnInit(): void {
+    console.log('route.params: ');
+    console.log(this.route.params);
+    this.inscricao = this.route.params.subscribe(
+      (params: any) => {
+        this.key = params.key;
+      }
+    ), this.displayPokemonDetail(this.key); // arrumar
+    console.log('valor da key: ');
+    console.log(this.key);
   }
 
-  displayPokemonDetail(): void {
-    this.adicionarPokemonService.adicionarPokemon(this.pokemonName).subscribe(data => this.infosDoPokemon.load = data);
+  displayPokemonDetail(key: any): void {
+    const takeOne = this.adicionarPokemonService.adicionarPokemon(key).pipe(take(1));
+    takeOne.subscribe(data => this.pokemonDetail.load = data);
+  }
+
+  ngOnDestroy(): void {
+    this.inscricao.unsubscribe();
   }
 
 }

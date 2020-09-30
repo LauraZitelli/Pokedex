@@ -1,13 +1,49 @@
 <section>
-  <header></header>
-</section>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="jumbotron" *ngIf="key">
+        <div class="col-sm-7">
+          <h1 class="display-3">{{pokemonDetail.load.name | titlecase}}</h1>
+        </div>
+        <div class="pokemon-profile-image">
+          <img src="{{pokemonDetail.load.sprites.front_shiny}}" width="229.66px" height="259.66px">
+        </div>
+        <div class="float-left">
+          <div class="col-sm-11 pokemon-stats-info">
+            <h2>Stats</h2>
+            <ul *ngFor="let item of pokemonDetail.load.stats">
+              <li><h4>{{item.stat.name | titlecase}}: {{item.base_stat}}</h4></li>
+            </ul>
+          </div>
+        </div>
 
-<section>
-  <div class="jumbotron">
-    <div class="column-6 push-1">
-      <div class="pokemon-profile">
-        <img src="{{infosDoPokemon.load.sprites.front_shiny}}" width="430px" height="430px">
+        <div class="row float-left mt-0 ml-2">
+          <app-evolucao [id]="pokemonDetail.load.id"></app-evolucao>
+        </div>
+
+        <div class="float-left ml-0">
+          <div class="col-sm-9 pokemon-general-info mt-3 float-left">
+            <h2>Informações Gerais</h2>
+            <div class="card border-success mb-3 ml-3" style="max-width: 27rem; max-height: 100%">
+              <div class="card-body row" style="padding: 20px">
+                <h4 class="card-title col-sm-6">Altura:</h4>
+                <p class="lead">{{pokemonDetail.load.height}} m</p>
+                <h4 class="card-title col-sm-6">Peso:</h4>
+                <p class="lead">{{pokemonDetail.load.weight}} Kg</p>
+                <h4 class="card-title col-sm-6">Habilidade:</h4>
+                <p class="lead">{{pokemonDetail.load.abilities[0].ability.name | titlecase}}</p>
+                <h4 class="card-title col-sm-6">Peso:</h4>
+                <p class="lead">{{pokemonDetail.load.weight}} Kg</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
+
+
+
+

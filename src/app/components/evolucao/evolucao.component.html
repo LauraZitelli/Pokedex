@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col">
+    <div *ngIf="cadeiaEvolucao">
+      <h2>Evolução</h2>
+      <div class="card border-danger mb-1 mt-0 float-left" style="max-width: 40rem;">
+        <div class="card-body">
+          <h4 class="card-title">{{cadeiaEvolucao.load.species.name | titlecase}} >>
+            {{cadeiaEvolucao.load.evolves_to[0].species.name | titlecase}} >>
+            {{cadeiaEvolucao.load.evolves_to[0].evolves_to[0].species.name | titlecase}}
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

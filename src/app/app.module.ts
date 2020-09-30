@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListaPokemonComponent } from './components/lista-pokemon/lista-pokemon.component';
 import { AdicionaPokemonComponent } from './components/adiciona-pokemon/adiciona-pokemon.component';
 import { PokemonDetailComponent } from './components/pokemon-detail/pokemon-detail.component';
+import { EvolucaoComponent } from './components/evolucao/evolucao.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PokemonDetailComponent } from './components/pokemon-detail/pokemon-deta
     HeaderComponent,
     ListaPokemonComponent,
     AdicionaPokemonComponent,
-    PokemonDetailComponent
+    PokemonDetailComponent,
+    EvolucaoComponent,
   ],
   imports: [
     BrowserModule,

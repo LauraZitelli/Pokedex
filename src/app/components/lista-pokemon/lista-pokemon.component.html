@@ -1,6 +1,6 @@
 <div>
   <div *ngIf="listaDePokemons">
-    <div *ngFor="let item of listaDeApresentacao">
+    <div *ngFor="let item of listaDeApresentacao" [routerLink]="['/pokemons', item]">
       <app-adiciona-pokemon [pokemonName]="item"></app-adiciona-pokemon>
     </div>
   </div>
@@ -8,10 +8,10 @@
 
 
 
-<!-- 
+<!--
 <div *ngIf="searchPokemon">
-    <div *ngFor="let item of obterPokemon()">
-      <app-adiciona-pokemon [pokemonName]="item"></app-adiciona-pokemon>
-    </div>
+  <div *ngFor="let item of obterPokemon()">
+    <app-adiciona-pokemon [pokemonName]="item"></app-adiciona-pokemon>
   </div>
+</div>
 -->
