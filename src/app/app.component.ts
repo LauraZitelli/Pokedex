@@ -7,12 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  searchPokemon: any = '';
-
-  searchChangedHandler(event: any): any {
-    this.searchPokemon = event;
-    console.log('searchPokemon agora vale:');
-    console.log(this.searchPokemon);
-  }
-
 }

@@ -1,4 +1,5 @@
 <section>
+  <app-header></app-header>
   <div class="container">
     <div class="row justify-content-center">
       <div class="jumbotron" *ngIf="key">
@@ -8,8 +9,8 @@
         <div class="pokemon-profile-image">
           <img src="{{pokemonDetail.load.sprites.front_shiny}}" width="229.66px" height="259.66px">
         </div>
-        <div class="float-left">
-          <div class="col-sm-11 pokemon-stats-info">
+        <div class="col-sm-5 float-left">
+          <div class="col-sm-12 pokemon-stats-info">
             <h2>Stats</h2>
             <ul *ngFor="let item of pokemonDetail.load.stats">
               <li><h4>{{item.stat.name | titlecase}}: {{item.base_stat}}</h4></li>
@@ -17,23 +18,23 @@
           </div>
         </div>
 
-        <div class="row float-left mt-0 ml-2">
+        <div class="row-sm-9 float-left mt-0 ml-3">
           <app-evolucao [id]="pokemonDetail.load.id"></app-evolucao>
         </div>
 
         <div class="float-left ml-0">
           <div class="col-sm-9 pokemon-general-info mt-3 float-left">
-            <h2>Informações Gerais</h2>
+            <h2 class="ml-3 mb-2 mt-3">Informações Gerais</h2>
             <div class="card border-success mb-3 ml-3" style="max-width: 27rem; max-height: 100%">
               <div class="card-body row" style="padding: 20px">
-                <h4 class="card-title col-sm-6">Altura:</h4>
-                <p class="lead">{{pokemonDetail.load.height}} m</p>
-                <h4 class="card-title col-sm-6">Peso:</h4>
-                <p class="lead">{{pokemonDetail.load.weight}} Kg</p>
-                <h4 class="card-title col-sm-6">Habilidade:</h4>
-                <p class="lead">{{pokemonDetail.load.abilities[0].ability.name | titlecase}}</p>
-                <h4 class="card-title col-sm-6">Peso:</h4>
-                <p class="lead">{{pokemonDetail.load.weight}} Kg</p>
+                <h4 class="card-title col-sm-6 ml-2">Altura:</h4>
+                <p class="lead float-right ml-3">{{pokemonDetail.load.height}} m</p>
+                <h4 class="card-title col-sm-6 ml-2">Peso:</h4>
+                <p class="lead float-right ml-3">{{pokemonDetail.load.weight}} Kg</p>
+                <h4 class="card-title col-sm-6 ml-2">Habilidade:</h4>
+                <p class="lead float-right ml-3">{{pokemonDetail.load.abilities[0].ability.name | titlecase}}</p>
+                <h4 class="card-title col-sm-6 ml-2">Peso:</h4>
+                <p class="lead float-right ml-3">{{pokemonDetail.load.weight}} Kg</p>
               </div>
             </div>
           </div>

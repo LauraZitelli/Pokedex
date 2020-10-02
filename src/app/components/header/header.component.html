@@ -1,17 +1,21 @@
 <style>
   input.form-control { width: 400px!important; }
-  
+
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand ml-5" href="#" routerLink="">Pokedex</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+  <a class="navbar-brand ml-5" href="#" routerLink=""><h3>Pokedex</h3></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+          aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse justify-content-md-center" id="navbarColor02">
-    <input class="form-control" type="text" placeholder="Search by Name" (keyup.enter)="onSave($event.target.value)">
-    <button class="btn btn-secondary my-2 my-sm-0 ml-1" type="submit" (click)="onSave($event.target.value)">Search</button>
+    <input class="form-control" type="text" placeholder="Search by Name" (keyup.enter)="navegaListagem($event.target.value)">
+
+        <!-- navigate do router no componente do header [routerLink]="['']" [queryParams]="{searchPokemon: searchKey}"-->
+
+    <button class="btn btn-secondary my-2 my-sm-0 ml-1" type="submit" (click)="navegaListagem($event.target.value)">Search</button>
   </div>
 </nav>
 

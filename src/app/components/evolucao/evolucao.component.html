@@ -1,12 +1,19 @@
 <div class="row">
   <div class="col">
     <div *ngIf="cadeiaEvolucao">
-      <h2>Evolução</h2>
-      <div class="card border-danger mb-1 mt-0 float-left" style="max-width: 40rem;">
+      <h2 class="ml-0 mb-2 mt-3">Evolução</h2>
+      <div class="card border-danger mb-1 mt-0 float-left" style="max-width: 40rem; max-height: 100%">
         <div class="card-body">
-          <h4 class="card-title">{{cadeiaEvolucao.load.species.name | titlecase}} >>
-            {{cadeiaEvolucao.load.evolves_to[0].species.name | titlecase}} >>
-            {{cadeiaEvolucao.load.evolves_to[0].evolves_to[0].species.name | titlecase}}
+          <h4 class="card-title">
+
+            <div *ngIf="cadeiaEvolucao.load.evolves_to[0]">
+              {{cadeiaEvolucao.load.species.name | titlecase}} >>
+              {{cadeiaEvolucao.load.evolves_to[0].species.name | titlecase}}
+            </div>
+            <div *ngIf="cadeiaEvolucao.load.evolves_to[0].evolves_to[0]">
+              >> {{cadeiaEvolucao.load.evolves_to[0].evolves_to[0].species.name | titlecase}}
+            </div>
+
           </h4>
         </div>
       </div>

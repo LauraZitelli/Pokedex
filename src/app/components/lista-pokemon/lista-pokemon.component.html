@@ -1,17 +1,15 @@
 <div>
+  <app-header></app-header>
   <div *ngIf="listaDePokemons">
     <div *ngFor="let item of listaDeApresentacao" [routerLink]="['/pokemons', item]">
       <app-adiciona-pokemon [pokemonName]="item"></app-adiciona-pokemon>
     </div>
   </div>
+  <div *ngIf="errorMessage" class="justify-content-center">{{errorMessage}}</div>
 </div>
 
 
 
-<!--
-<div *ngIf="searchPokemon">
-  <div *ngFor="let item of obterPokemon()">
-    <app-adiciona-pokemon [pokemonName]="item"></app-adiciona-pokemon>
-  </div>
-</div>
+<!-- Header enviando output para o Lista
+  <app-header (searchChanged)="searchChangedHandler($event)"></app-header>
 -->
