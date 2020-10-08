@@ -19,9 +19,9 @@ export class ListaPokemonComponent implements OnInit, OnDestroy {
   constructor(private listarPokemonService: ListarPokemonService, private route: ActivatedRoute, private router: Router) { }
 
   public searchPokemon: any = '';
-  public errorMessage: any = undefined;
+  public errorMessage: any = null;
+  public total: any = 807;
 
-  public listagem: Subscription;
   public variavelBusca: Subscription;
 
   public listaDePokemons: any[] = [];
@@ -31,73 +31,29 @@ export class ListaPokemonComponent implements OnInit, OnDestroy {
   public pokemonAtual: any = '';
 
   public offset: any = 0;
-  public limit: any = 20;
+  public limit: any = 807;
 
   ngOnInit(): void {
     this.listarPokemon(this.offset, this.limit);
-    /*
-    this.variavelBusca = this.route.queryParams.subscribe(
-      (queryParams: any) => {
-        this.searchPokemon = queryParams.searchKey;
-        console.log('dados do subscribe do queryParams:');
-        console.log(queryParams);
-        console.log(this.searchPokemon);
-        console.log('está rodando o filtro depois do query'), this.obterPokemon();
-      },
-    );
-    */
   }
-
-
-  /*
-  ngDoCheck(): void {
-    if (this.searchPokemon !== this.searchComparator) {
-      this.obterPokemon();
-      this.searchComparator = this.searchPokemon;
-    }
-  }
-  */
 
 
   listarPokemon(offset: any, limit: any): any {
-
     const listando = this.listarPokemonService.listarPokemon(offset, limit).pipe(first());
     listando.subscribe( data =>
       data.results.forEach(element => {
         this.listaDePokemons.push(element.name);
         this.pokemonAtual = element.name;
         this.getQuery();
-      }),
+      }), console.log(this.listaDePokemons)
     );
-    /*
-    this.listagem = this.listarPokemonService.listarPokemon(offset, limit).subscribe(data =>
-      data.results.forEach(element => {
-        this.listaDePokemons.push(element.name);
-        this.pokemonAtual = element.name;
-        // console.log('listaLength:', this.listaDePokemons.length);
-        this.getQuery();
-      })
-    );*/
 
   }
 
   getQuery(): void {
-    /*
-    const dataFirst = this.route.queryParams.pipe(first());
-    dataFirst.subscribe(
-      (queryParams: any) => {
-        this.searchPokemon = queryParams.searchKey;
-        console.log('Valor do searchPokemon dentro do componente de Listagem:');
-        console.log(this.searchPokemon);
-      },
-    );
-    */
-    console.log('ta na query');
     this.variavelBusca = this.route.queryParams.subscribe(
       (queryParams: any) => {
         this.searchPokemon = queryParams.searchKey;
-        // console.log('Valor do searchPokemon dentro do componente de Listagem:');
-        // console.log(this.searchPokemon);
         this.obterPokemon();
       },
     );
@@ -105,18 +61,14 @@ export class ListaPokemonComponent implements OnInit, OnDestroy {
 
   // retorna o elemento que combina com o filtro searchPokemon
   obterPokemon(): any {
-
-    console.log('Rodando o obterPokemon()', 'searchPokemon: ', this.searchPokemon, 'listaDePokemons.length:', this.listaDePokemons.length);
-
     if (! (this.listaDePokemons.length === 0 || ! this.searchPokemon) ) {
       this.listaDeApresentacao = [];
       this.listaDeApresentacao = this.listaDePokemons.filter(pokemon => {
         return pokemon === this.searchPokemon;
       });
-      console.log('listaDeApresentacao length: ', this.listaDeApresentacao.length);
+      this.errorMessage = null;
       if (this.listaDeApresentacao.length === 0){
         this.errorMessage = 'Pokemon Não Encontrado :(  Clique na Pokedex para voltar ao menu!';
-        // this.router.navigate(['']);
       }
     } else {
       this.listaDeApresentacao = [];
@@ -124,8 +76,15 @@ export class ListaPokemonComponent implements OnInit, OnDestroy {
     }
   }
 
+  /*
+  handleOnClick(): void {
+    this.offset = this.offset + 20;
+    this.limit = this.limit + 10;
+    this.listarPokemon(this.offset, this.limit);
+  }
+  */
+
   ngOnDestroy(): void {
-    // this.listagem.unsubscribe();
     this.variavelBusca.unsubscribe();
   }
 

@@ -12,14 +12,7 @@
 
   <div class="collapse navbar-collapse justify-content-md-center" id="navbarColor02">
     <input class="form-control" type="text" placeholder="Search by Name" (keyup.enter)="navegaListagem($event.target.value)">
-
-        <!-- navigate do router no componente do header [routerLink]="['']" [queryParams]="{searchPokemon: searchKey}"-->
-
     <button class="btn btn-secondary my-2 my-sm-0 ml-1" type="submit" (click)="navegaListagem($event.target.value)">Search</button>
   </div>
 </nav>
 
-<!--
-  <form class="form-inline mx-auto">
-  </form>
--->

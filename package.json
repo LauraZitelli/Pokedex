@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~10.0.14",
     "@angular/platform-browser-dynamic": "~10.0.14",
     "@angular/router": "~10.0.14",
+    "ngx-infinite-scroll": "^9.1.0",
+    "ngx-pagination": "^5.0.0",
     "pokeapi-js-wrapper": "^1.1.2",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",

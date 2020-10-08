@@ -1,15 +1,13 @@
 <div>
   <app-header></app-header>
   <div *ngIf="listaDePokemons">
-    <div *ngFor="let item of listaDeApresentacao" [routerLink]="['/pokemons', item]">
+    <div *ngFor="let item of listaDeApresentacao | paginate: { itemsPerPage: 12,
+                  currentPage: p, totalItems: total }" [routerLink]="['/pokemons', item]">
       <app-adiciona-pokemon [pokemonName]="item"></app-adiciona-pokemon>
     </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
   <div *ngIf="errorMessage" class="justify-content-center">{{errorMessage}}</div>
 </div>
 
 
-
-<!-- Header enviando output para o Lista
-  <app-header (searchChanged)="searchChangedHandler($event)"></app-header>
--->
